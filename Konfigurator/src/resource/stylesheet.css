@@ -1,0 +1,30 @@
+.root {
+    /*  -fx-background-color:"#0D0927";*/
+      -fx-background-repeat: stretch;
+      -fx-background-size: 100% 100%;
+}
+
+
+.button:hover{
+    -fx-background-color: #F3362D;
+    -fx-font-family: "Arial Black";
+    -fx-font-color : #F3362D;
+    border-radius: 6px ;
+    -fx-scale-y: 1.1;
+}
+.tekst {
+    -fx-text-fill: dodgerblue;
+    -fx-font-family: "Arial";
+    -fx-font-size: 16px;
+    -fx-fill: #818181;
+    -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.7), 6, 0.0, 0, 2);
+
+}
+#overskrift {
+    -fx-text-fill: black;
+    -fx-font-size: 16px;
+    -fx-font-family: "Arial";
+  /*  -fx-fill: #818181;*/
+    -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.7), 6, 0.0, 0, 2);
+
+}

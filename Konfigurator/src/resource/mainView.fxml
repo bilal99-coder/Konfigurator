@@ -7,10 +7,12 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -45,56 +47,62 @@
          </children>
       </VBox>
    </top>
-   <center>
+   <left>
       <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="663.0" prefWidth="1055.0" stylesheets="@stylesheet.css" BorderPane.alignment="CENTER">
          <children>
             <AnchorPane prefHeight="663.0" prefWidth="305.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label layoutX="12.0" layoutY="36.0" prefHeight="38.0" prefWidth="111.0" text="Merke" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="274.0">
+                  <Label layoutX="12.0" layoutY="36.0" prefHeight="38.0" prefWidth="75.0" text="Merke" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="252.0">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="merkeBox" layoutX="124.0" layoutY="42.0" prefHeight="25.0" prefWidth="197.0" promptText="Velg Kategori" AnchorPane.leftAnchor="124.0" />
-                  <Label layoutX="1.0" layoutY="73.0" prefHeight="55.0" prefWidth="98.0" text="Motor" AnchorPane.leftAnchor="12.0">
+                  <ComboBox fx:id="merkeBox" layoutX="124.0" layoutY="42.0" onAction="#changeModell" prefHeight="25.0" prefWidth="197.0" promptText="Velg Kategori" AnchorPane.leftAnchor="124.0" />
+                  <Label layoutX="1.0" layoutY="73.0" prefHeight="55.0" prefWidth="98.0" text="Model" AnchorPane.leftAnchor="12.0">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="motorBox" layoutX="124.0" layoutY="88.0" prefHeight="25.0" prefWidth="197.0" promptText="Velg Kategori" AnchorPane.leftAnchor="124.0" />
-                  <Label layoutX="26.0" layoutY="145.0" text="?" />
-                  <ComboBox layoutX="122.0" layoutY="141.0" prefHeight="25.0" prefWidth="197.0" promptText="Velg Kategori" AnchorPane.leftAnchor="124.0" />
-                  <Label contentDisplay="CENTER" layoutX="12.0" layoutY="169.0" prefHeight="50.0" prefWidth="127.0" text="Antall hestekrefter" textAlignment="CENTER">
+                  <ComboBox fx:id="modelBox" layoutX="124.0" layoutY="88.0" prefHeight="25.0" prefWidth="197.0" promptText="Velg Kategori" AnchorPane.leftAnchor="124.0" />
+                  <ComboBox fx:id="drivstoffBox" layoutX="122.0" layoutY="141.0" prefHeight="25.0" prefWidth="197.0" promptText="Velg Kategori" AnchorPane.leftAnchor="124.0" />
+                  <Label contentDisplay="CENTER" layoutX="12.0" layoutY="169.0" prefHeight="50.0" prefWidth="199.0" text="Antall hestekrefter" textAlignment="CENTER">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Slider fx:id="hestSlider" layoutX="55.0" layoutY="213.0" max="400.0" min="100.0" prefHeight="21.0" prefWidth="209.0" value="250.0" />
+                  <Slider fx:id="hestSlider" layoutX="55.0" layoutY="213.0" max="400.0" min="100.0" onDragDetected="#hkSliderOnAction" onDragDone="#hkSliderOnAction" prefHeight="21.0" prefWidth="209.0" showTickLabels="true" snapToTicks="true" value="250.0" />
                   <Label layoutX="1.0" layoutY="238.0" prefHeight="45.0" prefWidth="206.0" text="Girkasse" AnchorPane.leftAnchor="12.0">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <CheckBox fx:id="overskrift" layoutX="46.0" layoutY="282.0" mnemonicParsing="false" onAction="#autoGir" prefHeight="22.0" prefWidth="224.0" text="Automat" />
-                  <CheckBox fx:id="overskrift" layoutX="46.0" layoutY="306.0" mnemonicParsing="false" onAction="#manGir" prefHeight="22.0" prefWidth="226.0" text="Manuell" />
                   <Label layoutX="4.0" layoutY="339.0" prefHeight="38.0" prefWidth="229.0" text="Ekstra Utstyr" AnchorPane.leftAnchor="12.0">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <CheckBox fx:id="overskrift" layoutX="55.0" layoutY="379.0" mnemonicParsing="false" onAction="#HengerFesteBtn" text="Hengerfeste " />
-                  <CheckBox fx:id="overskrift" layoutX="55.0" layoutY="402.0" mnemonicParsing="false" onAction="#dab_Btn" prefHeight="22.0" prefWidth="128.0" text="Radio DAB+" />
-                  <CheckBox fx:id="overskrift" layoutX="55.0" layoutY="425.0" mnemonicParsing="false" onAction="#NavigasjonPakkeBtn" prefHeight="22.0" prefWidth="186.0" text="Navigasjonssystem" />
-                  <CheckBox fx:id="overskrift" layoutX="55.0" layoutY="449.0" mnemonicParsing="false" onAction="#klimaBtn" prefHeight="22.0" prefWidth="140.0" text="Klimapakke" />
-                  <Label layoutX="5.0" layoutY="473.0" prefHeight="33.0" prefWidth="142.0" text="Farge" AnchorPane.leftAnchor="12.0">
+                  <CheckBox fx:id="HengerFeste_CheckBtn" layoutX="55.0" layoutY="379.0" mnemonicParsing="false" text="Hengerfeste " />
+                  <CheckBox fx:id="radioDab_checkBtn" layoutX="55.0" layoutY="402.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="128.0" text="Radio DAB+" />
+                  <CheckBox fx:id="NavigasjonPakke_checkBtn" layoutX="55.0" layoutY="425.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="186.0" text="Navigasjonssystem" />
+                  <CheckBox fx:id="klimapakke_checkBtn" layoutX="55.0" layoutY="449.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="140.0" text="Klimapakke" />
+                  <Label layoutX="21.0" layoutY="517.0" prefHeight="33.0" prefWidth="142.0" text="Farge" AnchorPane.leftAnchor="21.0">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <CheckBox fx:id="overskrift" layoutX="46.0" layoutY="509.0" mnemonicParsing="false" onAction="#metalikkLakkBtn" text="Metalikk Lakk" />
-                  <CheckBox fx:id="overskrift" layoutX="197.0" layoutY="509.0" mnemonicParsing="false" onAction="#stnadardLakkBtn" prefHeight="22.0" prefWidth="141.0" text="Standard Lakk" />
-                  <Label layoutX="54.0" layoutY="537.0" prefHeight="17.0" prefWidth="101.0" text="   +13000 NOK" />
-                  <Label layoutX="215.0" layoutY="539.0" prefHeight="17.0" prefWidth="84.0" text="0 NOK" />
+                  <Label layoutX="57.0" layoutY="591.0" prefHeight="17.0" prefWidth="101.0" text="   +13000 NOK" />
+                  <Label layoutX="212.0" layoutY="591.0" prefHeight="17.0" prefWidth="84.0" text="0 NOK" />
+                  <Label layoutX="15.0" layoutY="126.0" prefHeight="55.0" prefWidth="98.0" text="Drivstoff">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="sliderValue" layoutX="272.0" layoutY="206.0" prefHeight="26.0" prefWidth="54.0" />
+                  <RadioButton fx:id="autoGirBtn" layoutX="54.0" layoutY="284.0" mnemonicParsing="false" onAction="#autoGir" prefHeight="18.0" prefWidth="85.0" text="Automat" />
+                  <RadioButton fx:id="manuellGirBtn" layoutX="53.0" layoutY="315.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="79.0" text="Manuell" />
+                  <RadioButton layoutX="60.0" layoutY="563.0" mnemonicParsing="false" onAction="#metalikkLakkBtn" prefHeight="18.0" prefWidth="118.0" text="Metalikk lakk" />
+                  <RadioButton layoutX="185.0" layoutY="563.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="111.0" text="Standard Lakk" />
+                  <Label layoutX="31.0" layoutY="481.0" prefHeight="36.0" prefWidth="263.0" />
                </children>
                <HBox.margin>
                   <Insets left="20.0" />
@@ -149,5 +157,5 @@
             <Insets left="10.0" top="10.0" />
          </BorderPane.margin>
       </HBox>
-   </center>
+   </left>
 </BorderPane>

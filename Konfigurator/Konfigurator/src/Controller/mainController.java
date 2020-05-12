@@ -7,8 +7,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import prisData.prisData;
+import Model.prisData;
+import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +47,7 @@ public class mainController implements Initializable {
     @FXML
     private Label sliderValue;
 
+
     @FXML
     void hkSliderOnAction(MouseEvent event) {
         //Henter ønsker hestkreft verdien og printer den ut i GUI
@@ -62,7 +67,14 @@ public class mainController implements Initializable {
     @FXML
     private CheckBox klimapakke_checkBtn;
 
+    @FXML
+    VBox vbMenu;
 
+
+
+    @FXML
+
+    FileChooser fileChooser = new FileChooser();
 
 
     @Override
@@ -72,7 +84,50 @@ public class mainController implements Initializable {
         drivstoffBox.getItems().addAll("Elektrisitet", "Bensin", "Diesel", "Hybrid");
         museInn_IFarge();
 
+
+        fileChooser.setInitialDirectory(new File("C:"));
+
+
+        createMenu();
     }
+    @FXML
+     public void createMenu(){
+        MenuBar menuBar = new MenuBar();
+        Menu mLagre = new Menu("Lagre");
+        Menu mLaste = new Menu("Laste");
+
+        MenuItem itemLagre = new MenuItem("Lagre");
+        MenuItem itemLaste = new MenuItem("Laste");
+
+        itemLagre.setOnAction(this::handlClicked);
+
+        mLagre.getItems().addAll(itemLagre);
+        mLaste.getItems().addAll(itemLaste);
+
+        menuBar.getMenus().addAll(mLagre,mLaste);
+        vbMenu.getChildren().add(menuBar);
+    }
+
+    @FXML
+    private void handlClicked(ActionEvent event){
+        Window stage = vbMenu.getScene().getWindow();
+        fileChooser.setTitle("Lagre");
+        fileChooser.setInitialFileName("minFil");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("tekstfil", "*.txt", "*.docx","*.doc"));
+
+
+
+    try{
+        File file = fileChooser.showOpenDialog(stage);
+        List<File> files = fileChooser.showOpenMultipleDialog(stage);
+        fileChooser.setInitialDirectory(file.getParentFile());
+    }catch (Exception ex)
+    {
+
+    }
+
+    }
+
 
     public void changeModell(ActionEvent event) {
         String Merke = merkeBox.getValue();
@@ -88,7 +143,7 @@ public class mainController implements Initializable {
             modelBox.getItems().addAll("Leaf", "Qashqai", "GTR");
 
         } else
-            modelBox.getItems().addAll("Velg en merke!");
+            modelBox.getItems().addAll("Velg et merke!");
 
     }
 
@@ -166,7 +221,7 @@ public class mainController implements Initializable {
         fargeButton.add(blåFarge);
         for (Button btn : fargeButton) {
             btn.setOnMouseEntered(e -> {
-                 if (btn == grønnFarge) {
+                if (btn == grønnFarge) {
                     valgtFarge.setText("Farge er grønn");
                 } else if (btn == blåFarge) {
                     valgtFarge.setText("Farge er blå");
@@ -210,7 +265,7 @@ public class mainController implements Initializable {
         // Henter ønsket hestkreft fra GUI
         int hk_Gui = (int) hestSlider.getValue();
 
-         Bil nyBil = new Bil(bilMerke, bilModell,  drivstoff, hk_Gui, erAutomat, farge, ekstra_Utstyr());
+        Bil nyBil = new Bil(bilMerke, bilModell,  drivstoff, hk_Gui, erAutomat, farge, ekstra_Utstyr());
 
         //Henter opprinnelig prisen fra Gui
         prisData prisListe = new prisData();
